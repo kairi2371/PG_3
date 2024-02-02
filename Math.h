@@ -2,7 +2,7 @@
 
 template <typename Type1,typename Type2>
 
-class MT
+class Math
 {
 public:
 
@@ -11,7 +11,7 @@ public:
 	}*/
 
 	//ã‚Æ“¯‚¶ˆÓ–¡
-	MT(Type1 num1, Type2 num2) :num1(num1), num2(num2) {};
+	Math(Type1 num1, Type2 num2) :num1(num1), num2(num2) {};
 
 
 	Type1 Min() {
