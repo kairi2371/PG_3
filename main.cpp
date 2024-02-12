@@ -1,30 +1,71 @@
 ﻿#include <stdio.h>
-#include <thread>
+#include <iostream>
+#include <Windows.h>
+#include <list>
 
+int main(void) {
+	SetConsoleOutputCP(65001);
 
-void Print1() {
-	printf("thread1\n");
-}
+	std::list<const char*> yamanoteStationName = {
+		"Tokyo",
+		"Kanda",
+		"Akihabara",
+		"Okachimachi",
+		"Ueno",
+		"Uguisudani",
+		"Nippori",
+		"Tabata",
+		"Komagome",
+		"Sugamo",
+		"Otsuka",
+		"Ikebukuro",
+		"Mejiro",
+		"Takadanobaba",
+		"Shin-Okubo",
+		"Shinjuku",
+		"Yoyogi",
+		"Harajuku",
+		"Shibuya",
+		"Ebisu",
+		"Meguro",
+		"Gotanda",
+		"Osaki",
+		"Shinagawa",
+		"Tamachi",
+		"Hamamatsucho",
+		"Shimbashi",
+		"Yurakucho",
+	};
 
-void Print2() {
-	printf("thread2\n");
-}
+	std::cout << "1970年の山手線駅一覧" << std::endl;
+	
+	for (auto& name : yamanoteStationName) {
+		std::cout << name << std::endl;
+	}
 
-void Print3() {
-	printf("thread3\n");
-}
+	std::cout << "\n" << std::endl;
 
-int main() {
+	auto findStationNameIterator = std::find(yamanoteStationName.begin(), yamanoteStationName.end(), "Nippori");
+	findStationNameIterator++;
+	yamanoteStationName.insert(findStationNameIterator, "Nishi-Nippori");
 
-	std::thread th1(Print1);
-	th1.join();
+	std::cout << "2019年の山手線駅一覧" << std::endl;
+	
+	for (auto& name : yamanoteStationName) {
+		std::cout << name << std::endl;
+	}
 
-	std::thread th2(Print2);
-	th2.join();
+	std::cout << "\n" << std::endl;
 
-	std::thread th3(Print3);
-	th3.join();
+	findStationNameIterator = std::find(yamanoteStationName.begin(), yamanoteStationName.end(), "Shinagawa");
+	findStationNameIterator++;
+	findStationNameIterator = yamanoteStationName.insert(findStationNameIterator, "Takanawa Gateway");
+
+	std::cout << "2022年の山手線駅一覧" << std::endl;
+
+	for (auto& name : yamanoteStationName) {
+		std::cout << name << std::endl;
+	}
 
 	return 0;
-
 }
